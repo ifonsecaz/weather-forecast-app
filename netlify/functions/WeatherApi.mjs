@@ -1,6 +1,7 @@
 import axios from 'axios';
+import {Handler} from "@netlify/functions";
 
-export const handler = async (event) => {
+export const handler = async (event, context) => {
   const { city } = event.queryStringParameters;
 
   if (!city) {
@@ -13,7 +14,7 @@ export const handler = async (event) => {
   try {
     const response = await axios.get('http://api.weatherapi.com/v1/forecast.json', {
       params: {
-        key: process.env.WEATHER_API_KEY,
+        key: process.env.MY_API_KEY,
         q: city,
         days: 6,
         aqi: 'no',
