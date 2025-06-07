@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {Handler} from "@netlify/functions";
 
 export const handler = async (event, context) => {
   const { city } = event.queryStringParameters;
