@@ -1,12 +1,34 @@
 import axios from 'axios';
 
+export const handler = async (event) => {
+  const { city } = event.queryStringParameters;
 
-let apiInstance = axios.create({
-    baseURL: `http://api.weatherapi.com/v1/forecast.json?key=${process.env.MY_API_KEY}&q=`
-});
+  if (!city) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: 'City parameter is required' }),
+    };
+  }
 
-export const fetchWeatherData = async (city) => {
-  if (!apiInstance) throw new Error("API not initialized");
-  const response = await apiInstance.get(`${city}&days=6&aqi=no&alerts=no`);
-  return response.data;
+  try {
+    const response = await axios.get('http://api.weatherapi.com/v1/forecast.json', {
+      params: {
+        key: process.env.WEATHER_API_KEY,
+        q: city,
+        days: 6,
+        aqi: 'no',
+        alerts: 'no',
+      },
+    });
+
+    return {
+      statusCode: 200,
+   body: JSON.stringify(response.data),
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Failed to fetch weather data' }),
+    };
+  }
 };
