@@ -1,3 +1,9 @@
+# Deployed in Netlify
+
+https://6843b4e1486f5a00081e4aed--jazzy-fox-7a083f.netlify.app/
+
+https://jazzy-fox-7a083f.netlify.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
