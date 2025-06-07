@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 let apiInstance = axios.create({
-    baseURL: `http://api.weatherapi.com/v1/forecast.json?key=${Netlify.env.get("MY_API_KEY")}&q=`
+    baseURL: `http://api.weatherapi.com/v1/forecast.json?key=${process.env.MY_API_KEY}&q=`
 });
 
 export const fetchWeatherData = async (city) => {
