@@ -4,7 +4,7 @@ let apiInstance = null;
 
 export const initializeWeatherApi = async () => {
   apiInstance = axios.create({
-    baseURL: `http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHER}&q=`
+    baseURL: `http://api.weatherapi.com/v1/forecast.json?key=${process.env.SITE_ID}&q=`
   });
 };
 
