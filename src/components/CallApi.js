@@ -1,4 +1,4 @@
-async function apiCall(cityname) {
+export const apiCall = async (cityname) => {
     const url = `/.netlify/functions/fetchWeatherData?city=${cityname}`;
     try {
         const response = await fetch(url);
