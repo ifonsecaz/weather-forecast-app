@@ -3,13 +3,8 @@ import axios from 'axios';
 let apiInstance = null;
 
 export const initializeWeatherApi = async () => {
-  const response = await fetch('/apikey.txt', {
-    headers: { 'Accept': 'text/plain' }
-  });
-  const key = await response.text();
-
   apiInstance = axios.create({
-    baseURL: `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=`
+    baseURL: `http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHER}&q=`
   });
 };
 
