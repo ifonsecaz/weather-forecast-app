@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import {useLocation} from 'react-router-dom';
-import { initializeWeatherApi, fetchWeatherData } from './WeatherApi';
+//import { initializeWeatherApi, fetchWeatherData } from './WeatherApiDep';
+import {apiCall} from './CallApi';
 import styled, { keyframes } from 'styled-components';
 
 const spin = keyframes`
@@ -184,7 +185,8 @@ const Weather = () => {
 
     const fetchAndSetData = async (cityName) => {
         try {
-            const weatherData = await fetchWeatherData(cityName);
+            //const weatherData = await fetchWeatherData(cityName);
+            const weatherData=await apiCall(cityName);
             setData(weatherData);
             const {a,b}=processImage(weatherData);
             setImage(a);
@@ -219,7 +221,7 @@ const Weather = () => {
 
      useEffect(() => {
         const start = async () => {
-            await initializeWeatherApi();
+            //await initializeWeatherApi();
             await fetchAndSetData(city);
         };
         start();

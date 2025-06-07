@@ -1,12 +1,9 @@
 import axios from 'axios';
 
-let apiInstance = null;
 
-export const initializeWeatherApi = async () => {
-  apiInstance = axios.create({
-    baseURL: `http://api.weatherapi.com/v1/forecast.json?key=${process.env.SITE_ID}&q=`
-  });
-};
+let apiInstance = axios.create({
+    baseURL: `http://api.weatherapi.com/v1/forecast.json?key=${Netlify.env.get("MY_API_KEY")}&q=`
+});
 
 export const fetchWeatherData = async (city) => {
   if (!apiInstance) throw new Error("API not initialized");
